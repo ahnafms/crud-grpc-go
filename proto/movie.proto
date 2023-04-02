@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package mahasiswa_proto;
+
+option go_package = "../pkg/protobuf";
+
+service MovieService {
+ rpc CreateMovie(CreateMovieRequest) returns (CreateMovieResponse) {}
+ rpc ListMovies(ListMoviesRequest) returns (ListMoviesResponse) {} 
+ rpc DeleteMovie(DeleteMovieRequest) returns (DeleteMovieResponse) {}
+ rpc UpdateMovie(UpdateMovieRequest) returns (UpdateMovieResponse) {}
+}
+
+message CreateMovieRequest {
+  Movie movie = 1;
+}
+
+message CreateMovieResponse {
+  int64 status = 1;
+}
+
+message ListMoviesRequest{}
+
+message ListMoviesResponse {
+  repeated Movie movieList = 1;  
+}
+
+message DeleteMovieRequest{
+  int64 id = 1;
+}
+
+message DeleteMovieResponse {
+  int64 status = 1;
+}
+
+message UpdateMovieRequest{
+  Movie movie = 1;
+}
+
+message UpdateMovieResponse {
+  int64 status = 1;
+}
+
+message Movie {
+  int64 id = 1;
+  string title = 2;
+  string director = 3;
+  int64 rating = 4;
+}
