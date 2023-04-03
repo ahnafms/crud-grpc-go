@@ -19,7 +19,7 @@ func (p *MovieService) CreateMovie(ctx context.Context, req *moviePb.CreateMovie
 
 func (p *MovieService) DeleteMovie(ctx context.Context, req *moviePb.DeleteMovieRequest) (*moviePb.DeleteMovieResponse, error){
   id := req.Id
-  database.DB.Delete(&id)
+  database.DB.Delete(&moviePb.Movie{}, &id)
   return &moviePb.DeleteMovieResponse{Status: 1}, nil
 }
 
